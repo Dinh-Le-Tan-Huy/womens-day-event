@@ -1,0 +1,106 @@
+[
+    {
+        "id": "NV001",
+        "name": "Bùi Hồng Anh",
+        "image": "/images/bui-hong-anh.jpg",
+        "department": "Nhân sự",
+        "position": "HR",
+        "status": "active"
+    },
+    {
+        "id": "NV002",
+        "name": "Bùi Thị Thanh Dung",
+        "image": "/images/bui-thi-thanh-dung.jpg",
+        "department": "Chưa phân công",
+        "position": "Nhân viên",
+        "status": "active"
+    },
+    {
+        "id": "NV003",
+        "name": "Dương Nguyễn Ngọc Tuyết",
+        "image": "/images/duong-nguyen-ngoc-tuyet.jpg",
+        "department": "Sales",
+        "position": "Nhân viên kinh doanh",
+        "status": "active"
+    },
+    {
+        "id": "NV004",
+        "name": "Lương Hoàng Mỹ Duyên",
+        "image": "/images/luong-hoang-my-duyen.jpg",
+        "department": "Nhân sự",
+        "position": "HR",
+        "status": "active"
+    },
+    {
+        "id": "NV005",
+        "name": "Mai Võ Bích Hạnh",
+        "image": "/images/mai-vo-bich-hanh.jpg",
+        "department": "Marketing",
+        "position": "Editor",
+        "status": "active"
+    },
+    {
+        "id": "NV006",
+        "name": "Nguyễn Thị Nhàn",
+        "image": "/images/nguyen-thi-nhan.jpg",
+        "department": "Marketing",
+        "position": "Nhân viên",
+        "status": "active"
+    },
+    {
+        "id": "NV007",
+        "name": "Nguyễn Thị Xinh",
+        "image": "/images/nguyen-thi-xinh.jpg",
+        "department": "Marketing",
+        "position": "Kế toán",
+        "status": "active"
+    },
+    {
+        "id": "NV008",
+        "name": "Phạm Thị Nhài",
+        "image": "/images/pham-thi-nhai.jpg",
+        "department": "Marketing",
+        "position": "Phó giám đốc Marketing",
+        "status": "active"
+    },
+    {
+        "id": "NV009",
+        "name": "Phạm Thị Thủy",
+        "image": "/images/pham-thi-thuy.jpg",
+        "department": "Nhân sự",
+        "position": "HR",
+        "status": "active"
+    },
+    {
+        "id": "NV010",
+        "name": "Trần Gia Hân",
+        "image": "/images/tran-gia-han.jpg",
+        "department": "Nhân sự",
+        "position": "HR",
+        "status": "active"
+    },
+    {
+        "id": "NV011",
+        "name": "Trương Dương Hiếu Thảo",
+        "image": "/images/truong-duong-hieu-thao.jpg",
+        "department": "Marketing",
+        "position": "Nhân viên",
+        "status": "active"
+    },
+    {
+        "id": "NV012",
+        "name": "Trương Ngọc Lan",
+        "image": "/images/truong-ngoc-lan.jpg",
+        "department": "Marketing",
+        "position": "Editor",
+        "status": "active"
+    },
+    {
+        "id": "NV013",
+        "name": "Võ Thị Hồng Mai",
+        "image": "/images/vo-thi-hong-mai.jpg",
+        "department": "Chưa phân công",
+        "position": "Nhân viên",
+        "status": "active"
+    }
+]

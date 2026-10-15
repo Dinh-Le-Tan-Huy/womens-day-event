@@ -22,13 +22,13 @@ export default function Welcome() {
                     🌸 Ngày Phụ Nữ Việt Nam
                 </span>
                 <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-rose-heading dark:text-white tracking-tight leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                    Chị em là ai đó{" "}
+                    Mời những bóng hồng{" "}
                     <span className="italic bg-gradient-to-r from-burgundy via-burgundy-hover to-gold bg-clip-text text-transparent">
                         vào Check-in nha
                     </span>
                 </h1>
                 <p className="mt-4 text-sm sm:text-base text-rose-body/75 dark:text-zinc-300 font-light max-w-lg leading-relaxed">
-                    Gửi trọn yêu thương và những lời chúc rạng rỡ nhất đến phái đẹp 💕
+                    Gửi trọn yêu thương và những lời chúc rạng rỡ nhất đến những bóng hồng nha 💕
                 </p>
             </Card>
 

@@ -39,7 +39,7 @@ export default function Infor() {
                 className="z-10 flex flex-col items-center text-center max-w-xl w-full mx-auto p-6 sm:p-10 animate-fadeInUp"
             >
                 <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-burgundy/10 border border-burgundy/15 text-burgundy text-[10px] sm:text-xs font-medium tracking-[0.15em] uppercase mb-4">
-                    🌸 Check-in Ngày 20/10 🌸
+                    🌸 Thiệp mời ngày 20/10 🌸
                 </span>
 
                 {/* Khung ảnh: Bắt đầu render khi đã Check-in đủ 3 thông tin */}
@@ -84,7 +84,7 @@ export default function Infor() {
                                     </p>
                                 ) : (
                                     <p className="text-sm sm:text-base font-bold text-burgundy dark:text-rose-300">
-                                        Check-in thành công: {checkedInUser.name}
+                                        đã gửi thành công: {checkedInUser.name}
                                     </p>
                                 )}
                                 <p className="text-xs text-rose-body/80 dark:text-zinc-300 mt-0.5">
@@ -123,12 +123,12 @@ export default function Infor() {
                         className="text-2xl sm:text-3xl font-semibold text-rose-heading dark:text-white tracking-tight leading-snug mt-1"
                         style={{ fontFamily: "'Cormorant Garamond', serif" }}
                     >
-                        Chị em là ai đó?
+                        Bóng hồng nào vậy?
                     </h1>
                 )}
 
                 {!checkedInUser && (<p className="mt-2 text-xs sm:text-sm text-rose-body/70 dark:text-zinc-300 font-light max-w-md leading-relaxed">
-                    Chào bạn đến với ngày 20/10 ngập tràn hoa và quà tặng ngọt ngào dành riêng cho các bạn nhen !
+                    Chào em đến với ngày 20/10 ngập tràn hoa và quà tặng ngọt ngào dành riêng cho em nhen !
                 </p>)}
 
                 {/* Form tìm kiếm & nhập thông tin Check-in */}
@@ -214,7 +214,7 @@ export default function Infor() {
                         onClick={handleCheckIn}
                         className="w-full sm:w-auto px-4 shadow-xl"
                     >
-                        Check-in ngay
+                        Có bất ngờ nè!
                     </Button>)}
                     <Button
                         href="/"

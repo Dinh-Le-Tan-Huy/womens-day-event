@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Button, Card } from "../Style";
 import bgImage from '../image/background_new.jpg';
 import { useInforLogic } from "./InforLogic";
@@ -47,40 +46,47 @@ export default function Infor() {
                 {checkedInUser && (
                     <div className="flex flex-col sm:flex-row items-center sm:items-stretch gap-4 my-3 w-full transition-all duration-500">
 
-                        {/* Cột trái: Ảnh nhân viên */}
+                        {/* Cột trái: Ảnh nhân viên (chỉ hiển thị nếu có hình) */}
+                        {checkedInUser.image && (
+                            <div
+                                className={`relative flex-shrink-0 rounded-2xl overflow-hidden shadow-lg border-2 border-white/80 group transition-all duration-300 ${isPortrait
+                                    ? "w-52 h-64 sm:w-56 sm:h-72"
+                                    : "w-full sm:w-64 h-52 sm:h-60"
+                                    }`}
+                            >
+                                <Image
+                                    src={checkedInUser.image}
+                                    alt={checkedInUser.name}
+                                    fill
+                                    unoptimized={typeof checkedInUser.image === "string"}
+                                    onLoad={(e) => {
+                                        const { naturalWidth, naturalHeight } = e.currentTarget;
 
-                        <div
-                            className={`relative flex-shrink-0 rounded-2xl overflow-hidden shadow-lg border-2 border-white/80 group transition-all duration-300 ${isPortrait
-                                ? "w-52 h-64 sm:w-56 sm:h-72"
-                                : "w-full sm:w-64 h-52 sm:h-60"
-                                }`}
-                        >
-                            <Image
-                                src={checkedInUser.image}
-                                alt={checkedInUser.name}
-                                fill
-                                unoptimized={typeof checkedInUser.image === "string"}
-                                onLoad={(e) => {
-                                    const { naturalWidth, naturalHeight } = e.currentTarget;
+                                        if (naturalWidth && naturalHeight) {
+                                            setIsPortrait(naturalHeight > naturalWidth);
+                                        }
+                                    }}
+                                    className="object-contain object-center transition-transform duration-500 group-hover:scale-105"
+                                    sizes="(max-width: 640px) 100vw, 288px"
+                                />
 
-                                    if (naturalWidth && naturalHeight) {
-                                        setIsPortrait(naturalHeight > naturalWidth);
-                                    }
-                                }}
-                                className="object-contain object-center transition-transform duration-500 group-hover:scale-105"
-                                sizes="(max-width: 640px) 100vw, 288px"
-                            />
-
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none" />
-                        </div>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent pointer-events-none" />
+                            </div>
+                        )}
 
 
                         {/* Cột phải: Thông tin nhân viên + sự kiện */}
                         <div className="flex flex-col justify-between gap-3 flex-1 text-left">
                             <div>
-                                <p className="text-sm sm:text-base font-bold text-burgundy dark:text-rose-300">
-                                    Check-in thành công: {checkedInUser.name}
-                                </p>
+                                {checkedInUser.isNotInList || !checkedInUser.name ? (
+                                    <p className="text-sm sm:text-base font-bold text-burgundy dark:text-rose-300">
+                                        Bạn chưa có tên trong danh sách, đợi lần cập nhật tiếp theo
+                                    </p>
+                                ) : (
+                                    <p className="text-sm sm:text-base font-bold text-burgundy dark:text-rose-300">
+                                        Check-in thành công: {checkedInUser.name}
+                                    </p>
+                                )}
                                 <p className="text-xs text-rose-body/80 dark:text-zinc-300 mt-0.5">
                                     {checkedInUser.position} • {checkedInUser.department}
                                 </p>
@@ -210,15 +216,14 @@ export default function Infor() {
                     >
                         🎁 Check-in ngay
                     </Button>
-                    <Link href="/" className="w-full sm:w-auto">
-                        <Button
-                            variant="secondary"
-                            size="md"
-                            className="w-full sm:w-auto px-6"
-                        >
-                            Quay lại
-                        </Button>
-                    </Link>
+                    <Button
+                        href="/"
+                        variant="secondary"
+                        size="md"
+                        className="w-full sm:w-auto px-6"
+                    >
+                        Quay lại
+                    </Button>
                 </div>
             </Card>
         </main>

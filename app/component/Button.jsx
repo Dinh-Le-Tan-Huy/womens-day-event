@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { buttonStyles } from "../Style/tokens";
 
 /**
@@ -7,6 +8,7 @@ import { buttonStyles } from "../Style/tokens";
  * @param {Object} props
  * @param {'primary' | 'secondary' | 'gold' | 'glass'} [props.variant='primary']
  * @param {'sm' | 'md' | 'lg'} [props.size='md']
+ * @param {string} [props.href]
  * @param {string} [props.className='']
  * @param {React.ReactNode} props.children
  */
@@ -14,6 +16,7 @@ export default function Button({
   variant = "primary",
   size = "md",
   className = "",
+  href,
   children,
   ...props
 }) {
@@ -25,10 +28,19 @@ export default function Button({
 
   const selectedVariant = buttonStyles[variant] || buttonStyles.primary;
   const selectedSize = sizeClasses[size] || sizeClasses.md;
+  const combinedClasses = `inline-flex items-center justify-center gap-2 select-none ${selectedVariant} ${selectedSize} ${className}`;
+
+  if (href) {
+    return (
+      <Link href={href} className={combinedClasses} {...props}>
+        {children}
+      </Link>
+    );
+  }
 
   return (
     <button
-      className={`inline-flex items-center justify-center gap-2 select-none ${selectedVariant} ${selectedSize} ${className}`}
+      className={combinedClasses}
       {...props}
     >
       {children}

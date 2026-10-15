@@ -1,17 +1,17 @@
 'use client';
 
-import { useState, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import type { StaticImageData } from "next/image";
-import bgImage from '../image/background_new.jpg';
 import employeesData from '../data/Asian_Holding.json';
 
 export interface Employee {
     id: string;
     name: string;
-    image: string | StaticImageData;
+    image?: string | StaticImageData;
     department: string;
     position: string;
     status?: string;
+    isNotInList?: boolean;
 }
 
 export interface FilterState {
@@ -60,7 +60,32 @@ export const useInforLogic = () => {
     const [checkedInUser, setCheckedInUser] = useState<Employee | null>(null);
     const [errorMessage, setErrorMessage] = useState<string>("");
     const [imageRatio, setImageRatio] = useState<number>(3 / 4);
+    const [userIp, setUserIp] = useState<string>("");
     const employees = employeesData as Employee[];
+
+    // Lấy và hiển thị IP máy đăng nhập
+    useEffect(() => {
+        const fetchIp = async () => {
+            try {
+                // Thử lấy Public IP từ dịch vụ ipify
+                const res = await fetch("https://api.ipify.org?format=json");
+                const data = await res.json();
+                setUserIp(data.ip);
+                console.log("🌐 IP máy đăng nhập (Public IP):", data.ip);
+            } catch {
+                try {
+                    // Fallback lấy IP thông qua API nội bộ
+                    const res = await fetch("/api/get-ip");
+                    const data = await res.json();
+                    setUserIp(data.ip);
+                    console.log("🖥️ IP máy đăng nhập (Network IP):", data.ip);
+                } catch {
+                    console.warn("⚠️ Không thể xác định IP máy đăng nhập");
+                }
+            }
+        };
+        fetchIp();
+    }, []);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -151,16 +176,22 @@ export const useInforLogic = () => {
             );
         });
 
-        const userToCheckIn: Employee = matched || {
-            id: "NV" + Math.floor(100 + Math.random() * 900),
-            name: name.trim(),
-            department: department.trim(),
-            position: position.trim(),
-            image: bgImage,
-        };
+        // Nếu không tìm thấy tên trong danh sách (matched == null / undefined)
+        const userToCheckIn: Employee = matched
+            ? { ...matched, isNotInList: false }
+            : {
+                id: "NV" + Math.floor(100 + Math.random() * 900),
+                name: name.trim(),
+                department: department.trim(),
+                position: position.trim(),
+                image: "",
+                isNotInList: true,
+            };
 
         setCheckedInUser(userToCheckIn);
         setErrorMessage("");
+
+        console.log(`📌 [Check-in] Họ tên: "${userToCheckIn.name}" | IP máy: ${userIp || "Đang lấy..."} | Thời gian: ${new Date().toLocaleTimeString("vi-VN")}`);
 
         // Reset lại 3 ô input sau khi check-in
         setFilter({
@@ -179,6 +210,7 @@ export const useInforLogic = () => {
         employee,
         checkedInUser,
         errorMessage,
+        userIp,
         filteredEmployees,
         handleInputChange,
         handleSelectEmployee,

@@ -3,13 +3,8 @@
 import Image from 'next/image';
 import bgImage from '../image/background_new.jpg';
 import { Button, Card } from '../Style';
-import { useRouter } from 'next/navigation';
 
 export default function Welcome() {
-    const router = useRouter();
-    const hanldeClick = () => {
-        router.push("/Infor");
-    };
     return (
         <div className='relative flex flex-col items-center justify-center min-h-[100dvh] w-full overflow-hidden px-4'>
             <Image
@@ -26,7 +21,7 @@ export default function Welcome() {
                 <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-burgundy/10 border border-burgundy/20 text-burgundy text-xs sm:text-sm font-medium tracking-[0.12em] uppercase mb-4">
                     🌸 Ngày Phụ Nữ Việt Nam
                 </span>
-                <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-rose-heading dark:text-white tracking-tight leading-tight" style={{fontFamily: "'Cormorant Garamond', serif"}}>
+                <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-rose-heading dark:text-white tracking-tight leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                     Chị em là ai đó{" "}
                     <span className="italic bg-gradient-to-r from-burgundy via-burgundy-hover to-gold bg-clip-text text-transparent">
                         vào Check-in nha
@@ -38,15 +33,14 @@ export default function Welcome() {
             </Card>
 
             <Button
-                onClick={hanldeClick}
+                href="/Infor"
                 variant="primary"
                 size="lg"
                 className="z-10 tracking-widest text-base sm:text-lg px-10 sm:px-12 py-3 sm:py-3.5 shadow-lg animate-fadeIn"
-                style={{animationDelay: '0.2s'}}
+                style={{ animationDelay: '0.2s' }}
             >
                 Welcome
             </Button>
-
         </div>
     );
 }

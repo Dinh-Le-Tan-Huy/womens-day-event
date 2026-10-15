@@ -21,7 +21,7 @@ export default function Infor() {
     } = useInforLogic();
 
     return (
-        <main className="relative flex flex-col items-center justify-center min-h-[100dvh] w-full overflow-hidden px-4 py-8">
+        <main className="relative flex flex-col items-center justify-center min-h-[100dvh] w-full overflow-y-auto px-4 py-8">
             {/* Ảnh nền toàn trang */}
             <Image
                 src={bgImage}
@@ -127,12 +127,12 @@ export default function Infor() {
                     </h1>
                 )}
 
-                <p className="mt-2 text-xs sm:text-sm text-rose-body/70 dark:text-zinc-300 font-light max-w-md leading-relaxed">
+                {!checkedInUser && (<p className="mt-2 text-xs sm:text-sm text-rose-body/70 dark:text-zinc-300 font-light max-w-md leading-relaxed">
                     Chào bạn đến với ngày 20/10 ngập tràn hoa và quà tặng ngọt ngào dành riêng cho các bạn nhen !
-                </p>
+                </p>)}
 
                 {/* Form tìm kiếm & nhập thông tin Check-in */}
-                <div className="w-full max-w-md flex flex-col gap-2 my-4">
+                {!checkedInUser && (<div className="w-full max-w-md flex flex-col gap-2 my-4">
                     {/* Ô nhập Họ và tên */}
                     <div className="relative">
                         <input
@@ -205,17 +205,17 @@ export default function Infor() {
                             )}
                         </div>
                     )}
-                </div>
+                </div>)}
 
                 <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 w-full sm:w-auto">
-                    <Button
+                    {!checkedInUser && (<Button
                         variant="primary"
                         size="md"
                         onClick={handleCheckIn}
                         className="w-full sm:w-auto px-4 shadow-xl"
                     >
-                        🎁 Check-in ngay
-                    </Button>
+                        Check-in ngay
+                    </Button>)}
                     <Button
                         href="/"
                         variant="secondary"
